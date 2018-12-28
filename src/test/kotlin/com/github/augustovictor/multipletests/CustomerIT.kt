@@ -1,25 +1,42 @@
 package com.github.augustovictor.multipletests
 
+import org.junit.Assert.assertTrue
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
-import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.context.junit4.SpringRunner
-import org.springframework.test.web.servlet.MockMvc
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
-@RunWith(SpringRunner::class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@AutoConfigureMockMvc
 class CustomerIT {
-    @Autowired
-    private lateinit var mockMvc: MockMvc
+    @Test
+    fun `test should fail`() {
+        assertTrue(false)
+    }
 
     @Test
-    fun `should return 200 on findAll customers`() {
-        mockMvc.perform(MockMvcRequestBuilders.get("/customers"))
-                .andExpect(status().isOk)
+    fun `should take 8sec to complete and pass`() {
+        Thread.sleep(8_000)
+        assertTrue(true)
     }
+
+    @Test
+    fun `should take 3sec to complete and pass`() {
+        Thread.sleep(3_000)
+        assertTrue(true)
+    }
+
+    @Test
+    fun `should take 5sec to complete and fail`() {
+        Thread.sleep(3_000)
+        assertTrue(false)
+    }
+
+    @Test
+    fun `should take 2sec to complete and pass`() {
+        Thread.sleep(2_000)
+        assertTrue(true)
+    }
+
+    @Test
+    fun `should take 7sec to complete and fail`() {
+        Thread.sleep(2_000)
+        assertTrue(false)
+    }
+
 }
