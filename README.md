@@ -20,3 +20,4 @@ For example, the default lifecycle comprises of the following phases (for a comp
 Command | Description
 ---|---
 `mvn test` | Run only tests that match `<include>` value in `pom.xml`
+`mvn test -Pintegration-tests` | Run only tests with profile `integration-tests` that match `<include>` value in `pom.xml`
