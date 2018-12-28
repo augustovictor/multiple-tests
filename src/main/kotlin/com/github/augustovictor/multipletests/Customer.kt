@@ -10,4 +10,6 @@ class Customer(
 
         @Column(name = "username")
         val username: String? = ""
-)
+) {
+        fun usernameCharCount(): Int? = username?.length
+}
