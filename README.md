@@ -16,8 +16,28 @@ For example, the default lifecycle comprises of the following phases (for a comp
 - **install** - install the package into the local repository, for use as a dependency in other projects locally
 - **deploy** - done in the build environment, copies the final package to the remote repository for sharing with other developers and projects.
 
-## Commands
+## Strategies
+### Maven profile and surefire
+- Define surefire plugin to scan for tests that match a given name to run unit tests;
+- Create a maven profile to handle integration tests that match a given name;
+
+### Commands
 Command | Description
 ---|---
 `mvn test` | Run only tests that match `<include>` value in `pom.xml`
 `mvn test -Pintegration-tests` | Run only tests with profile `integration-tests` that match `<include>` value in `pom.xml`
+
+### Failsafe plugin
+The Maven failsafe plugin activates the extra Maven phases that come after the package phase. These are:
+
+1. `pre-integration-test`
+1. `integration-test`
+1. `post-integration-test`
+1. `verify`
+
+### Commands
+Command | Description
+---|---
+`mvn test` | Run only tests that match `<include>` value in `pom.xml`
+`mvn integration-test` | Run integration tests without stopping if one of them breaks
+`mvn verify` | Stops build if an integration test fails
