@@ -15,3 +15,8 @@ For example, the default lifecycle comprises of the following phases (for a comp
 - **verify** - run any checks on results of integration tests to ensure quality criteria are met
 - **install** - install the package into the local repository, for use as a dependency in other projects locally
 - **deploy** - done in the build environment, copies the final package to the remote repository for sharing with other developers and projects.
+
+## Commands
+Command | Description
+---|---
+`mvn test` | Run only tests that match `<include>` value in `pom.xml`
