@@ -2,7 +2,9 @@ package com.github.augustovictor.multipletests
 
 import org.junit.Assert.*
 import org.junit.Test
+import org.junit.experimental.categories.Category
 
+@Category(FastTests::class)
 class CustomerTestUnit {
     @Test
     fun `should return 5 for username abcde`() {
