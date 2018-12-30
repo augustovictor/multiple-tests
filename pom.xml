@@ -80,47 +80,30 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+
+
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.19.1</version>
+				<version>2.22.1</version>
+				<!--<dependencies>-->
+					<!--<dependency>-->
+						<!--<groupId>org.apache.maven.surefire</groupId>-->
+						<!--<artifactId>surefire-junit4</artifactId>-->
+						<!--<version>2.22.1</version>-->
+					<!--</dependency>-->
+				<!--</dependencies>-->
 				<configuration>
 					<includes>
-						<include>**/*Unit*</include>
+						<include>**/*UT</include>
 					</includes>
+					<excludedGroups>com.github.augustovictor.multipletests.SlowTests</excludedGroups>
 				</configuration>
 			</plugin>
+
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>2.19.1</version>
-				<executions>
-					<execution>
-						<id>integration-test</id>
-						<goals>
-							<goal>integration-test</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>verify</id>
-						<goals>
-							<goal>verify</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-
-
-
-
-
-
-
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.22.1</version>
 				<dependencies>
 					<dependency>
@@ -130,32 +113,23 @@
 					</dependency>
 				</dependencies>
 				<configuration>
-					<includes>
-						<include>**/*Unit</include>
-					</includes>
-					<excludedGroups>com.github.augustovictor.multipletests.SlowTests</excludedGroups>
+					<groups>com.github.augustovictor.multipletests.SlowTests</groups>
 				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+						</goals>
+						<configuration>
+							<includes>
+								<include>**/*IT</include>
+							</includes>
+							<excludes></excludes>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 
 		</plugins>
 	</build>
-	<!--<profiles>-->
-		<!--<profile>-->
-			<!--<id>integration-tests</id>-->
-			<!--<build>-->
-				<!--<plugins>-->
-					<!--<plugin>-->
-						<!--<groupId>org.apache.maven.plugins</groupId>-->
-						<!--<artifactId>maven-surefire-plugin</artifactId>-->
-						<!--<version>2.19.1</version>-->
-						<!--<configuration>-->
-							<!--<includes>-->
-								<!--<include>**/*IT*</include>-->
-							<!--</includes>-->
-						<!--</configuration>-->
-					<!--</plugin>-->
-				<!--</plugins>-->
-			<!--</build>-->
-		<!--</profile>-->
-	<!--</profiles>-->
 </project>

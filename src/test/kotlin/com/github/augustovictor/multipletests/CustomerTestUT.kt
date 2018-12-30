@@ -5,7 +5,7 @@ import org.junit.Test
 import org.junit.experimental.categories.Category
 
 @Category(FastTests::class)
-class CustomerTestUnit {
+class CustomerTestUT {
     @Test
     fun `should return 5 for username abcde`() {
         assertEquals(5, Customer(username = "abcde").usernameCharCount())

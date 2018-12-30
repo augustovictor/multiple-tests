@@ -1,5 +1,6 @@
 package com.github.augustovictor.multipletests
 
+import junit.framework.Assert.assertTrue
 import org.junit.Test
 import org.junit.experimental.categories.Category
 import org.junit.runner.RunWith
@@ -12,16 +13,21 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 @Category(SlowTests::class)
-@RunWith(SpringRunner::class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@AutoConfigureMockMvc
+//@RunWith(SpringRunner::class)
+//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+//@AutoConfigureMockMvc
 class CustomerIT {
-    @Autowired
-    private lateinit var mockMvc: MockMvc
+//    @Autowired
+//    private lateinit var mockMvc: MockMvc
+
+//    @Test
+//    fun `should return 200 on findAll customers`() {
+//        mockMvc.perform(MockMvcRequestBuilders.get("/customers"))
+//                .andExpect(status().isOk)
+//    }
 
     @Test
-    fun `should return 200 on findAll customers`() {
-        mockMvc.perform(MockMvcRequestBuilders.get("/customers"))
-                .andExpect(status().isOk)
+    fun longRunningTest() {
+        assertTrue(true)
     }
 }
